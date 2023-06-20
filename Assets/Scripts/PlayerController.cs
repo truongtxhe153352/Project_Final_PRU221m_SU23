@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     private Animator myAnimator;
 
-    // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -23,7 +22,6 @@ public class PlayerController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
