@@ -25,7 +25,5 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
 
         lastPlayerPosition = thePlayer.transform.position;
-
-        Debug.Log("Huy chim bi bi");
     }
 }
