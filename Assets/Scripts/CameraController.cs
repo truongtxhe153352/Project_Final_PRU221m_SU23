@@ -26,5 +26,6 @@ public class CameraController : MonoBehaviour
 
         lastPlayerPosition = thePlayer.transform.position;
         Debug.Log("Truong cute");
+
     }
 }
