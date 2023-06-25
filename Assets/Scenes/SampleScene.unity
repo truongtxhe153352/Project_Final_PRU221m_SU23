@@ -284,7 +284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounds: {fileID: 1197850358380526674, guid: 1e6aa8fb4a7efff469f361373c8f515b, type: 3}
   generatePoint: {fileID: 973667108}
-  distanceBetween: 2
+  minDistance: 2
+  maxDistance: 4.85
 --- !u!1 &973667107
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1197850358380526675, guid: 1e6aa8fb4a7efff469f361373c8f515b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.39
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 1197850358380526675, guid: 1e6aa8fb4a7efff469f361373c8f515b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -538,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d7a2662b0adc942af75d14fa2414da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   jumpForce: 15
   grounded: 0
   whatIsGround:
@@ -621,7 +622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034407826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.4, y: 0, z: 0}
+  m_LocalPosition: {x: -16.87, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
