@@ -15,7 +15,8 @@ public class GroundBehaviour : MonoBehaviour
     {
         if(transform.position.x < groundDestructionPoint.transform.position.x)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

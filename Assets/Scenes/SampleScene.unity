@@ -238,6 +238,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePlayer: {fileID: 1578870089}
+--- !u!1 &813415693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813415695}
+  - component: {fileID: 813415694}
+  m_Layer: 0
+  m_Name: GroundPoolObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &813415694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813415693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0c92eece4ec7f4d95ff898e7644c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObject: {fileID: 1197850358380526674, guid: 1e6aa8fb4a7efff469f361373c8f515b, type: 3}
+  pootsAmount: 10
+--- !u!4 &813415695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813415693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.578976, y: 1.5274348, z: 0.023611791}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &850925101
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +332,7 @@ MonoBehaviour:
   generatePoint: {fileID: 973667108}
   minDistance: 2
   maxDistance: 4.85
+  pool: {fileID: 813415694}
 --- !u!1 &973667107
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,8 +586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d7a2662b0adc942af75d14fa2414da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jumpForce: 15
+  moveSpeed: 5
+  jumpForce: 18
   grounded: 0
   whatIsGround:
     serializedVersion: 2
