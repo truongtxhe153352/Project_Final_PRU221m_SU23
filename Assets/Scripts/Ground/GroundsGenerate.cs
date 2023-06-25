@@ -6,8 +6,10 @@ public class GroundsGenerate : MonoBehaviour
 {
     public GameObject grounds;
     public Transform generatePoint;
-    public float distanceBetween;
+    float distanceBetween;
     float groundsWidth;
+    public float minDistance;
+    public float maxDistance;
     void Start()
     {
         groundsWidth = grounds.GetComponent<BoxCollider2D>().size.x;
@@ -19,7 +21,8 @@ public class GroundsGenerate : MonoBehaviour
     {
         if (transform.position.x < generatePoint.position.x)
         {
-            transform.position = new Vector3(transform.position.x + groundsWidth + distanceBetween, Random.Range(-2, 0.75f), transform.position.z);
+            distanceBetween = Random.Range(minDistance, maxDistance);
+            transform.position = new Vector3(transform.position.x + groundsWidth + distanceBetween, Random.Range(-1, 0.5f), transform.position.z);
             Instantiate(grounds, transform.position, transform.rotation);
         }
     }
