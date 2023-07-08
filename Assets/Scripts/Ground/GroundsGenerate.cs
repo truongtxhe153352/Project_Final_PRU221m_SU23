@@ -11,11 +11,17 @@ public class GroundsGenerate : MonoBehaviour
     public float minDistance;
     public float maxDistance;
 
-    public UseObjectPool pool;
-
+    public UseObjectPool[] pool;
+    private int groundSelector;
+    private float[] groundDistances;
     void Start()
     {
         groundsWidth = grounds.GetComponent<BoxCollider2D>().size.x;
+        groundDistances = new float[pool.Length];
+        for (int i = 0; i < pool.Length; i++)
+        {
+            groundDistances[i] = pool[i].poolObject.GetComponent<BoxCollider2D>().size.x;
+        }
 
     }
 
@@ -25,9 +31,11 @@ public class GroundsGenerate : MonoBehaviour
         if (transform.position.x < generatePoint.position.x)
         {
             distanceBetween = Random.Range(minDistance, maxDistance);
-            transform.position = new Vector3(transform.position.x + groundsWidth + distanceBetween, Random.Range(-1, 0.5f), transform.position.z);
-            // Instantiate(grounds, transform.position, transform.rotation);
-            GameObject newGround = pool.GetPooledObject();
+            groundSelector = Random.Range(0, pool.Length);
+            transform.position = new Vector3(transform.position.x + groundDistances[groundSelector] + distanceBetween, Random.Range(-1, 0.5f), transform.position.z);
+
+            //Instantiate(theGrounds[groundSelector], transform.position, transform.rotation);
+            GameObject newGround = pool[groundSelector].GetPooledObject();
             newGround.transform.position = transform.position;
             newGround.transform.rotation = transform.rotation;
             newGround.SetActive(true);
