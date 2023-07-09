@@ -14,6 +14,15 @@ public class GroundsGenerate : MonoBehaviour
     public UseObjectPool[] pool;
     private int groundSelector;
     private float[] groundDistances;
+
+
+    // groundHeight setting
+    private float minHeight;
+    private float maxHeight;
+    public Transform maxHeightPoint;
+    public float maxHeightChange;
+    private float heightChange;
+
     void Start()
     {
         groundsWidth = grounds.GetComponent<BoxCollider2D>().size.x;
@@ -22,6 +31,8 @@ public class GroundsGenerate : MonoBehaviour
         {
             groundDistances[i] = pool[i].poolObject.GetComponent<BoxCollider2D>().size.x;
         }
+        minHeight = transform.position.y;
+        maxHeight = maxHeightPoint.position.y;
 
     }
 
@@ -32,6 +43,17 @@ public class GroundsGenerate : MonoBehaviour
         {
             distanceBetween = Random.Range(minDistance, maxDistance);
             groundSelector = Random.Range(0, pool.Length);
+
+            //setting hight of ground
+            heightChange = transform.position.y + Random.Range(maxHeightChange, -maxHeightChange);
+            if (heightChange > maxHeight)
+            {
+                heightChange = maxHeight;
+            } else if (heightChange < minHeight)
+            {
+                heightChange = minHeight;
+            }
+
             transform.position = new Vector3(transform.position.x + groundDistances[groundSelector] + distanceBetween, Random.Range(-1, 0.5f), transform.position.z);
 
             //Instantiate(theGrounds[groundSelector], transform.position, transform.rotation);
