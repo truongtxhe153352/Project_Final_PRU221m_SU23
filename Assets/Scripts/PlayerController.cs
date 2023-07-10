@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     //setting game faster and faster
     public float speedIncrease;
+    private float speedIncreaseMilestoneStore;
+
+
     private float speedCount;
     public float speedMultipler;
 
@@ -21,17 +24,25 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
 
-    private Collider2D myCollider;
+    public float moveSpeedStore;
+    // private Collider2D myCollider;
+    private float speedMilestoneCountStore;
 
     private Animator myAnimator;
+
+    public GameManager gameManager;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<Collider2D>();
+       // myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         jumpTimeCounter = jumpForce;
         speedCount = speedIncrease;
+
+        moveSpeedStore = moveSpeed;
+        speedMilestoneCountStore = speedCount;
+        speedIncreaseMilestoneStore = speedIncrease;
     }
 
     void Update()
@@ -80,5 +91,16 @@ public class PlayerController : MonoBehaviour
 
         myAnimator.SetFloat("Speed", myRigidbody.velocity.x);
         myAnimator.SetBool("Grounded", grounded);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       if(collision.gameObject.tag == "killbox")
+        {
+            gameManager.restartGame();
+            moveSpeed = moveSpeedStore;
+            speedCount = speedMilestoneCountStore;
+            speedIncrease = speedIncreaseMilestoneStore; 
+        }
     }
 }
