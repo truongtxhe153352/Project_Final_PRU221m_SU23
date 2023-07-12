@@ -12,11 +12,16 @@ public class GameManager : MonoBehaviour
 
     private GroundBehaviour[] platformList;
 
+    private ScoreManager theScoreManager;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        _ = platformStartPoint - platformGenerator.position;
+        platformStartPoint = platformGenerator.position;
         playerStartPoint = playerController.transform.position;
+    
+    theScoreManager = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -32,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RestartGameCo()
     {
+        theScoreManager.scoreIncreasing = false;
         playerController.gameObject.SetActive (false);
         yield return new WaitForSeconds(0.5f);
         platformList = FindObjectsOfType<GroundBehaviour>();
@@ -43,5 +49,9 @@ public class GameManager : MonoBehaviour
         playerController.transform.position = playerStartPoint;
         platformGenerator.position = platformStartPoint;
         playerController.gameObject.SetActive (true);
+   
+    theScoreManager.scoreCount = 0;
+        theScoreManager.scoreIncreasing = true;
+
     }
 }

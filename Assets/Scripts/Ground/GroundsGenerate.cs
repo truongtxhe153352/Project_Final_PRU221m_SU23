@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundsGenerate : MonoBehaviour
@@ -23,6 +24,10 @@ public class GroundsGenerate : MonoBehaviour
     public float maxHeightChange;
     private float heightChange;
 
+    private CoinGenerator coinGenerator;
+    public float randomcoinThreadold;
+
+
     void Start()
     {
         groundsWidth = grounds.GetComponent<BoxCollider2D>().size.x;
@@ -33,6 +38,9 @@ public class GroundsGenerate : MonoBehaviour
         }
         minHeight = transform.position.y;
         maxHeight = maxHeightPoint.position.y;
+
+        coinGenerator = FindObjectOfType<CoinGenerator>();
+
 
     }
 
@@ -49,18 +57,26 @@ public class GroundsGenerate : MonoBehaviour
             if (heightChange > maxHeight)
             {
                 heightChange = maxHeight;
-            } else if (heightChange < minHeight)
+            }
+            else if (heightChange < minHeight)
             {
                 heightChange = minHeight;
             }
 
+            //transform.position = new Vector3(transform.position.x + groundDistances[groundSelector] + distanceBetween, Random.Range(-1, 0.5f), transform.position.z);
             transform.position = new Vector3(transform.position.x + groundDistances[groundSelector] + distanceBetween, Random.Range(-1, 0.5f), transform.position.z);
+
 
             //Instantiate(theGrounds[groundSelector], transform.position, transform.rotation);
             GameObject newGround = pool[groundSelector].GetPooledObject();
             newGround.transform.position = transform.position;
             newGround.transform.rotation = transform.rotation;
             newGround.SetActive(true);
+
+            if (Random.Range(0f, 100f) < randomcoinThreadold)
+            {
+                coinGenerator.SpawnCoins(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z));
+            }
         }
     }
 }
