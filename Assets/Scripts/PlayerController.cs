@@ -32,10 +32,13 @@ public class PlayerController : MonoBehaviour
 
     public GameManager gameManager;
 
+    private bool stoppedJumping;
+    //private bool canDoubleJumping;
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-       // myCollider = GetComponent<Collider2D>();
+        // myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         jumpTimeCounter = jumpForce;
         speedCount = speedIncrease;
@@ -43,6 +46,8 @@ public class PlayerController : MonoBehaviour
         moveSpeedStore = moveSpeed;
         speedMilestoneCountStore = speedCount;
         speedIncreaseMilestoneStore = speedIncrease;
+
+        stoppedJumping = true;
     }
 
     void Update()
@@ -67,10 +72,17 @@ public class PlayerController : MonoBehaviour
             if (grounded)
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                stoppedJumping = false;
             }
+            //if (!grounded && canDoubleJumping)
+            //{
+            //    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+            //    stoppedJumping = false;
+            //    canDoubleJumping = false;
+            //}
         }
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping)
         {
             if (jumpTimeCounter > 0)
             {
@@ -82,11 +94,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
         {
             jumpTimeCounter = 0;
+            stoppedJumping = true;
         }
 
         if (grounded)
         {
             jumpTimeCounter = timeToJump;
+           // canDoubleJumping = true;
         }
 
         myAnimator.SetFloat("Speed", myRigidbody.velocity.x);
@@ -95,12 +109,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if(collision.gameObject.tag == "killbox")
+        if (collision.gameObject.tag == "killbox")
         {
             gameManager.restartGame();
             moveSpeed = moveSpeedStore;
             speedCount = speedMilestoneCountStore;
-            speedIncrease = speedIncreaseMilestoneStore; 
+            speedIncrease = speedIncreaseMilestoneStore;
         }
     }
 }
