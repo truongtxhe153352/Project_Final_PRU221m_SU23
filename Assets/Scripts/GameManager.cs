@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour
             platformList[i].gameObject.SetActive(false);
         } 
 
-        playerController.transform.position = playerStartPoint;
-        platformGenerator.position = platformStartPoint;
+        playerController.transform.position = platformStartPoint;//playerStartPoint
+        platformGenerator.position = playerStartPoint;
         playerController.gameObject.SetActive(true);
 
         theScoreManager.scoreCount = 0;
