@@ -107,14 +107,14 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetBool("Grounded", grounded);
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "killbox")
-    //    {
-    //        gameManager.restartGame();
-    //        moveSpeed = moveSpeedStore;
-    //        speedCount = speedMilestoneCountStore;
-    //        speedIncrease = speedIncreaseMilestoneStore;
-    //    }
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "killbox")
+        {
+            gameManager.restartGame();
+            moveSpeed = moveSpeedStore;
+            speedCount = speedMilestoneCountStore;
+            speedIncrease = speedIncreaseMilestoneStore;
+        }
+    }
 }
