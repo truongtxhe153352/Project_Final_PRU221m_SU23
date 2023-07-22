@@ -1,8 +1,8 @@
-﻿//using System.Collections;
+//using System.Collections;
 //using System.Collections.Generic;
 //using UnityEngine;
 
-//public class EnemyGenerate : MonoBehaviour
+//public class EnemyFlyBlack : MonoBehaviour
 //{
 //    public GameObject circle;
 //    float timer = 0;
@@ -29,7 +29,7 @@
 //            Vector3 screenPosition = new Vector3(Screen.width, 0, 0);
 //            Vector3 worldPosition = mainCamera.ScreenToWorldPoint(screenPosition);
 
-//            Vector3 vector3 = new Vector3(worldPosition.x, Random.Range(-1.8f, 4.3f), 0);
+//            Vector3 vector3 = new Vector3(worldPosition.x, Random.Range(-2.0f, 5f), 0);
 //            GameObject obj = Instantiate<GameObject>(circle, vector3, Quaternion.identity);
 //            //obj.GetComponent<Rigidbody2D>().AddForce(randomForce, ForceMode2D.Impulse);
 //        }
@@ -41,7 +41,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenerate : MonoBehaviour
+public class EnemyFlyBlack : MonoBehaviour
 {
     public GameObject circle;
     float timer = 0;

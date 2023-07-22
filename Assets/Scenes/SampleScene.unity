@@ -247,6 +247,7 @@ MonoBehaviour:
   platformGenerator: {fileID: 850925102}
   playerController: {fileID: 1578870089}
   theDeathMenu: {fileID: 770163651}
+  isPlayerAlive: 1
 --- !u!4 &250497589
 Transform:
   m_ObjectHideFlags: 0
@@ -554,6 +555,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -642,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10ae3693e5e59f459f300bce15a51ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circle: {fileID: 6036482580248904197, guid: ba712f57d4144ad42bc884bdb711bb28, type: 3}
+  circle: {fileID: 6498111985435827228, guid: 569ec858ce9497148a27fcfcbfc9f09e, type: 3}
   mainCamera: {fileID: 519420031}
 --- !u!114 &519420034
 MonoBehaviour:
@@ -657,6 +659,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thePlayer: {fileID: 1578870089}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59537cf7dda5a7d46ab86bcfd5ec5840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circle: {fileID: 3727692223185504932, guid: 2c4132e4cbf92d34baddd586615894f3, type: 3}
+  mainCamera: {fileID: 519420031}
 --- !u!1 &554186326
 GameObject:
   m_ObjectHideFlags: 0
