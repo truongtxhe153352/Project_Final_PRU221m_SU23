@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - killbox
+  - enemy
+  - bow
+  - gun
+  - stone
   layers:
   - Default
   - TransparentFX
