@@ -27,6 +27,9 @@ public class GroundsGenerate : MonoBehaviour
     private CoinGenerator coinGenerator;
     public float randomcoinThreadold;
 
+    public float randomSpikeDangerThreshold;
+    public UseObjectPool spikeDangerPool;
+
 
     void Start()
     {
@@ -77,6 +80,22 @@ public class GroundsGenerate : MonoBehaviour
             {
                 coinGenerator.SpawnCoins(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z));
             }
+
+            if (Random.Range(0f, 100f) < randomSpikeDangerThreshold)
+            {
+                GameObject newSpikeDanger = spikeDangerPool.GetPooledObject();
+
+                float sprikeXPosition = Random.Range(-groundDistances[groundSelector] / 2f + 1, groundDistances[groundSelector] / 2f - 1) ;
+
+                Vector3 spikeDangerPositon = new Vector3(sprikeXPosition, 0.5f, 0f);
+
+                newSpikeDanger.transform.position = transform.position + spikeDangerPositon;
+
+                newSpikeDanger.transform.rotation = transform.rotation;
+                newSpikeDanger.SetActive(true); 
+            }
+
+
         }
     }
 }
