@@ -8,11 +8,14 @@ public class PickPupPoints : MonoBehaviour
 
     private ScoreManager scoreManager;
 
+    private AudioSource coinSoud;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
-        
+
+        coinSoud = GameObject.Find("Coin").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,16 @@ public class PickPupPoints : MonoBehaviour
         {
             scoreManager.AddScore(scoreToGive);
             gameObject.SetActive(false);
+
+            if (coinSoud.isPlaying)
+            {
+                coinSoud.Stop();
+                coinSoud.Play();
+            } else
+            {
+                coinSoud.Play();
+            }
+
         }
     }
 }

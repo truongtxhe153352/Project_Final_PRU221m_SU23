@@ -33,7 +33,11 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
 
     private bool stoppedJumping;
-    //private bool canDoubleJumping;
+    private bool canDoubleJumping;
+
+
+    public AudioSource jumpSound;
+    public AudioSource dieSource;
 
     void Start()
     {
@@ -73,13 +77,8 @@ public class PlayerController : MonoBehaviour
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 stoppedJumping = false;
+                jumpSound.Play();
             }
-            //if (!grounded && canDoubleJumping)
-            //{
-            //    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
-            //    stoppedJumping = false;
-            //    canDoubleJumping = false;
-            //}
         }
 
         if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping)
@@ -88,6 +87,8 @@ public class PlayerController : MonoBehaviour
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
+                jumpSound.Play();
+                //stoppedJumping = false;
             }
         }
 
@@ -115,6 +116,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = moveSpeedStore;
             speedCount = speedMilestoneCountStore;
             speedIncrease = speedIncreaseMilestoneStore;
+            dieSource.Play();
         }
     }
 }
