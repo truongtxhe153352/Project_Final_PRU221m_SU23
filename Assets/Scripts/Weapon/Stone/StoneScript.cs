@@ -21,7 +21,7 @@ namespace Assets.Scripts.Weapon.Stone
 
         void Update()
         {
-            GameObject enemy = GameObject.FindGameObjectWithTag("enemy");
+            GameObject enemy = getNearestEnemy();
             if (enemy != null)
             {
                 timer += Time.deltaTime;
@@ -34,6 +34,24 @@ namespace Assets.Scripts.Weapon.Stone
                     timer = 0;
                 }
             }
+        }
+
+        private GameObject getNearestEnemy()
+        {
+            float currentDistance = float.MaxValue;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+            GameObject targetEnemy = null;
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                GameObject obj = enemies[i];
+                float objectDistance = Vector3.Distance(transform.position, obj.transform.position);
+                if (objectDistance < currentDistance)
+                {
+                    targetEnemy = obj;
+                    currentDistance = objectDistance;
+                }
+            }
+            return targetEnemy;
         }
     }
 }

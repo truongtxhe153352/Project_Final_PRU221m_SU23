@@ -25,7 +25,7 @@ namespace Assets.Scripts.Weapon.Gun
 
         void Update()
         {
-            GameObject enemy = GameObject.FindGameObjectWithTag("enemy");
+            GameObject enemy = getNearestEnemy();
             if (enemy != null)
             {
                 Vector2 direction = enemy.transform.position - transform.position;
@@ -58,10 +58,25 @@ namespace Assets.Scripts.Weapon.Gun
                     //shoot.GetComponent<Rigidbody2D>().AddForce(direction, ForceMode2D.Impulse);
                     timer = 0;
                 }
-
-
             }
+        }
 
+        private GameObject getNearestEnemy()
+        {
+            float currentDistance = float.MaxValue;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+            GameObject targetEnemy = null;
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                GameObject obj = enemies[i];
+                float objectDistance = Vector3.Distance(transform.position, obj.transform.position);
+                if (objectDistance < currentDistance)
+                {
+                    targetEnemy = obj;
+                    currentDistance = objectDistance;
+                }
+            }
+            return targetEnemy;
         }
     }
 }
