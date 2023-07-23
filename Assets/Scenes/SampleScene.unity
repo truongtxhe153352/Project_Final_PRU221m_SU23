@@ -1535,8 +1535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounds: {fileID: 1197850358380526674, guid: 1e6aa8fb4a7efff469f361373c8f515b, type: 3}
   generatePoint: {fileID: 973667108}
-  minDistance: 2
-  maxDistance: 3
+  minDistance: 1.5
+  maxDistance: 2
   pool:
   - {fileID: 813415694}
   - {fileID: 73323013}
@@ -1545,7 +1545,7 @@ MonoBehaviour:
   maxHeightPoint: {fileID: 1785035547}
   maxHeightChange: 10
   randomcoinThreadold: 75
-  randomSpikeDangerThreshold: 20
+  randomSpikeDangerThreshold: 10
   spikeDangerPool: {fileID: 871450896}
 --- !u!1 &853217614
 GameObject:
